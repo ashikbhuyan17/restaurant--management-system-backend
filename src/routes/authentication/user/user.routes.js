@@ -4,8 +4,10 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
 const User = require('../../../models/authentication/user/user.models')
-const { signIn, signUp, getAllUser, requireSignIn } = require('../../../controller/authentication/user/user.controllers');
+const { signIn, signUp, getAllUser, } = require('../../../controller/authentication/user/user.controllers');
 const { validateSignupRequest, validateSignInRequest, isRequestValidated } = require('../../../validators/auth')
+const { requireSignIn } = require('../../../common-middleware/index')
+
 
 router.post('/signUp', validateSignupRequest, isRequestValidated, signUp)
 router.post('/signIn', validateSignInRequest, isRequestValidated, signIn)
