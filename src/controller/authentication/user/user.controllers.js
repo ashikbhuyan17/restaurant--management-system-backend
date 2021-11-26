@@ -14,7 +14,9 @@ const signIn = (req, res) => {
                     const token = jwt.sign({ email: user.email, _id: user._id, role: user.role }, process.env.JWT_SECRET, { expiresIn: '24h' })
                     const { _id, firstName, lastName, email, role, fullName } = user
                     return res.status(200).json({
-                        token,
+                        token: {
+                            token
+                        },
                         user: {
                             _id, email, role, fullName
                         }
